@@ -3,29 +3,28 @@
 # Exercise 1.27
 import csv
 import sys
+import report
 
 def portfolioCost(filert):
     '''
     Reads file at filert and calculates total cost of stock formatted to two decimals
     '''
     total = 0.0
-
-    with open(filert, 'rt') as file:
-        rows = csv.reader(file)
-        headers = next(rows)
-        for row in rows:
-            try:
-                total = total + int(row[1]) * float(row[2])
-            except ValueError:
-                print('Invalid value on line', row)
+    portfolio = report.readPortfolio(filert)
+    for row in portfolio:
+        try:
+            total = total + row['shares'] * row['price']
+        except ValueError:
+            print('Invalid value on line', row)
 
 
     return round(total, 2)
 
-if len(sys.argv) == 2:
-    filename = sys.argv[1]
-else:
-    filename = 'data/portfolio.csv'
+def main(argv):
+    if len(argv) != 2:
+        raise SystemExit('Usage: %s portfile' % args[0])
+    print('Total cost', portfolioCost(argv[1]))
 
-cost = portfolioCost(filename)
-print('Total cost', cost)
+if __name__ == '__main__':
+    import sys
+    main(sys.argv)
