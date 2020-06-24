@@ -4,21 +4,15 @@
 import csv
 import sys
 import report
+import stock
 
 def portfolioCost(filert):
     '''
     Reads file at filert and calculates total cost of stock formatted to two decimals
     '''
-    total = 0.0
     portfolio = report.readPortfolio(filert)
-    for row in portfolio:
-        try:
-            total = total + row['shares'] * row['price']
-        except ValueError:
-            print('Invalid value on line', row)
-
-
-    return round(total, 2)
+    
+    return portfolio.total_cost
 
 def main(argv):
     if len(argv) != 2:

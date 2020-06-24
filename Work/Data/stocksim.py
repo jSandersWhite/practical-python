@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!C:/Users/fishm/AppData/Local/Programs/Python/Python36/python.exe
 # stocksim.py
 #
 # Stock market simulator.  This simulator creates stock market
@@ -13,7 +13,7 @@
 import math
 import time
 
-history_file = "dowstocks.csv"
+history_file = "./dowstocks.csv"
 
 # Convert a time string such as "4:00pm" to minutes past midnight
 def minutes(tm):
