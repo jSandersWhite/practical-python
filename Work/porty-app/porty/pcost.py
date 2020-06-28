@@ -3,8 +3,8 @@
 # Exercise 1.27
 import csv
 import sys
-import report
-import stock
+from . import report
+from . import stock
 
 def portfolioCost(filert):
     '''
